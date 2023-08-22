@@ -1,14 +1,7 @@
 const axios = require('axios');
 
-
 class OpportunityService {
     async getOpportunitiesByPipelineId(pipelineId) {
-
-        app.get('/opportunity/:pipelineId', (req, res, next) => {
-            const pipelineId = req.params;
-            console.log('pipelineId', pipelineId);
-        });
-
         const apiKey = 'api_2njGFk7XPkP03sesznS09v.2swvLxjx0op6E7EuOeMSAa'
         let buff = new Buffer.from(apiKey);
         let base64data = buff.toString('base64');

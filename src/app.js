@@ -19,16 +19,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-let pipelineId;
-app.get('/opportunity/:pipelineId', (req, res, next) => {
-    pipelineId = req.params;
-});
-
-console.log('pipelineId', pipelineId);
-
 app.use('/', indexRouter);
 app.use('/pipeline', pipelineRouter);
-app.use('/opportunity/:pipelineId', opportunityRouter({pipelineId}));
+app.use('/opportunity/:pipelineId', opportunityRouter);
 
 app.use(function(req, res, next) {
     next(createError(404));

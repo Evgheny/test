@@ -5,6 +5,7 @@ const express = require('express'),
 
 router.use(async (req, res, next) => {
     // console.log('PIPELINEID', pipelineId)
+    console.log('req', req.params)
     let data = await OpportunityService.getOpportunitiesByPipelineId(1234);
 
     if (data) {
@@ -21,4 +22,3 @@ router
     .get(OpportunityController.getOpportunitiesByPypelineId)
 
 module.exports = router;
-
