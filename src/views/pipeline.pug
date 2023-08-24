@@ -2,7 +2,9 @@ doctype html
 html(lang="en")
     head
         title Pipelines
-        script(type='text/javascript').
+        script(type='text/javascript')
+        script(src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+
         link(rel='stylesheet', href='../public/style.css')
         style
             include ../public/style.css
@@ -10,37 +12,39 @@ html(lang="en")
     h2 Pipelines List
         if data
             ol.alternating-colors
-                each dot in data
+                each pipeline in data
                     li
-                        strong Pipeline #{dot.id}
+                        strong Pipeline ID:&nbsp #{pipeline.id}&nbsp
+                            button
+                                a(style='text-decoration: none' href='opportunity/' + pipeline.id) Get opportunities
                         p
-                        strong Name:
-                        |#{dot.name}
+                        strong Name:&nbsp
+                        |#{pipeline.name}
                         ul
-                            each status in dot.statuses
+                            each status in pipeline.statuses
                                 p
-                                strong Status ID:
+                                strong Status ID:&nbsp
                                 | #{status.id}
                                 p
-                                strong Status label:
+                                strong Status label:&nbsp
                                 |#{status.label}
                                 p
-                                strong Status type:
+                                strong Status type:&nbsp
                                 |#{status.type}
                         p
-                        strong Created By:
-                        |#{dot.created_by}
+                        strong Created By:&nbsp
+                        |#{pipeline.created_by}
                         p
-                        strong Updated By:
-                        |#{dot.updated_by}
+                        strong Updated By:&nbsp
+                        |#{pipeline.updated_by}
                         p
-                        strong Date created:
-                        |#{dot.date_created}
+                        strong Date created:&nbsp
+                        |#{pipeline.date_created}
                         p
-                        strong Date update:
-                        |#{dot.date_updated}
+                        strong Date update:&nbsp
+                        |#{pipeline.date_updated}
                         p
-                        strong Organization:
-                        |#{dot.organization_id}
+                        strong Organization:&nbsp
+                        |#{pipeline.organization_id}
 
 

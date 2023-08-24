@@ -1,24 +1,17 @@
 const express = require('express'),
     router = express.Router(),
-    OpportunityController = require('../controllers/opportunity.controller'),
     OpportunityService = require('../services/opportunity.service');
 
-router.use(async (req, res, next) => {
-    // console.log('PIPELINEID', pipelineId)
-    console.log('req', req.params)
-    let data = await OpportunityService.getOpportunitiesByPipelineId(1234);
+router.get('/:pipelineId', async (req, res) => {
+    let opportunities = await OpportunityService.getOpportunitiesByPipelineId(req.params.pipelineId);
 
-    if (data) {
-        req.pipelines = data;
-        res.render('opportunity', data);
+    if (opportunities && opportunities.length) {
+        req.opportunities = opportunities;
+        res.render('opportunity', { opportunities });
     } else
         return res
             .status(500)
-            .send({ message: 'something went wrong' });
+            .send({ message: `No opportunities for pipeline with id: ${req.params.pipelineId}` });
 });
-
-router
-    .route('/')
-    .get(OpportunityController.getOpportunitiesByPypelineId)
 
 module.exports = router;

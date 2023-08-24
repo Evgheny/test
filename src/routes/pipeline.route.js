@@ -1,9 +1,8 @@
 const express = require('express'),
     router = express.Router(),
-    PipelineController = require('../controllers/pipeline.controller'),
     PipelineService = require('../services/pipeline.service');
 
-router.use(async (req, res, next) => {
+router.use(async (req, res) => {
     let data = await PipelineService.getPipelines();
 
     if (data) {
@@ -14,9 +13,5 @@ router.use(async (req, res, next) => {
             .status(500)
             .send({ message: 'something went wrong' });
 });
-
-router
-    .route('/')
-    .get(PipelineController.getPipelines)
 
 module.exports = router;

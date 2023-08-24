@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/pipeline', pipelineRouter);
-app.use('/opportunity/:pipelineId', opportunityRouter);
+app.use('/opportunity', opportunityRouter);
 
 app.use(function(req, res, next) {
     next(createError(404));

@@ -15,7 +15,14 @@ class OpportunityService {
                 }
             })
 
-            return response.data
+            let opportunities;
+            if (response.data.data && !!response.data.data.length) {
+                opportunities = response.data.data.filter(( opportunity ) => {
+                    return opportunity.pipeline_id === pipelineId;
+                })
+            }
+
+            return opportunities;
         } catch (error) {
             console.log(error)
         }

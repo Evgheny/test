@@ -8,3 +8,20 @@ html(lang="en")
             include ../public/style.css
     body
     h2 Opportunities List
+        if opportunities
+            ol.alternating-colors
+                each opportunity in opportunities
+                    li
+                        strong Opportunity ID:&nbsp #{opportunity.id}
+                        p
+                        strong Organization ID:&nbsp
+                        | #{opportunity.organization_id}
+                        p
+                        strong Label:&nbsp
+                        | #{opportunity.label}
+                        p
+                        strong Type:&nbsp
+                        | #{opportunity.type}
+                        p
+                        strong Pipeline Id:&nbsp
+                        | #{opportunity.pipeline_id}
